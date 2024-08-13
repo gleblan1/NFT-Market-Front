@@ -1,14 +1,14 @@
 import {makeStyles} from "tss-react/mui";
 
-export const useClasses = makeStyles<{isScrolledToTop: boolean}>()((theme, { isScrolledToTop }) => ({
+export const useClasses = makeStyles<{isScrolledToTop: boolean}>()(({palette}, { isScrolledToTop }) => ({
     paper: {
-        h: 9,
+        height: 9,
     },
     text: {
-        fontSize: 14,
+        fontSize: '0.875rem',
         fontWeight: 500,
         fontFamily: 'Raleway, sans-serif',
-        color: theme.palette.primary.contrastText
+        color: palette.primary.contrastText
     },
     header: {
         width: "90%", 
@@ -23,7 +23,7 @@ export const useClasses = makeStyles<{isScrolledToTop: boolean}>()((theme, { isS
         left: '50%',
         transform: 'translateX(-50%)',
         zIndex: 1,
-        backgroundColor: isScrolledToTop ? theme.palette.background.default : theme.palette.background.default,
+        backgroundColor: isScrolledToTop ? palette.background.default : palette.background.default,
         transition: 'background-color 0.3s ease',
     },
 }));

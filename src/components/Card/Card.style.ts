@@ -1,6 +1,6 @@
 import { makeStyles } from "tss-react/mui";
 
-export const useClasses = makeStyles()((theme) => ({
+export const useClasses = makeStyles()(({palette}) => ({
   card: {
     position: 'relative',
     borderRadius: 37,
@@ -36,7 +36,7 @@ export const useClasses = makeStyles()((theme) => ({
   },
   button: {
     borderRadius: 5,
-    color: theme.palette.primary.contrastText,
-    backgroundColor: theme.palette.background.default
+    color: palette.primary.contrastText,
+    backgroundColor: palette.background.default
   },
 }));

@@ -1,3 +1,3 @@
-interface LoadingProps {
+export type LoadingProps = {
   text: string
 }

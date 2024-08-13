@@ -13,7 +13,6 @@ export default function MUISwitch() {
     <FormGroup>
       <FormControlLabel
         control={<MaterialUISwitch sx={{ m: 1 }} defaultChecked />}
-        label=""
         onChange={changeHandler}
       />
     </FormGroup>

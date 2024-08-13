@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import { Button, Card, CardMedia, Typography } from '@mui/material';
-import { useState } from 'react';
+import { FC, useState } from 'react';
 import coinflip from '../../assets/coinflip.gif';
 import coinflip_disabled from '../../assets/coinflip_disabled.gif';
 import axios from 'axios';
@@ -9,8 +9,8 @@ import { BasicModal } from '../../components/BasicModal/BasicModal';
 import { getConfig } from '../../helpers';
 import { useClasses } from './MintPage.style';
 
-export default function MintPage() {
-  const [enabled, setEnabled] = useState(false);
+export const MintPage: FC = () => {
+  const [isEnabled, setIsEnabled] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [tokenId, setTokenId] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -22,7 +22,7 @@ export default function MintPage() {
   };
 
   async function mint() {
-    setEnabled(true);
+    setIsEnabled(true);
     setLoading(true); 
     try {
       const { contract, signer, address } = await getConfig();
@@ -44,14 +44,14 @@ export default function MintPage() {
 
       tx.wait().then(() => {
         setLoading(false);
-        setEnabled(false);
+        setIsEnabled(false);
         setTimeout(() => {
           setIsModalOpen(true);
         }, 700);
       });
     } catch (error) {
       setLoading(false);
-      setEnabled(false);
+      setIsEnabled(false);
       console.error(error);
     }
   }
@@ -59,13 +59,13 @@ export default function MintPage() {
   return (
     <Box className={classes.container}>
       <Typography variant="h1" color="secondary">Mint NFT</Typography>
-      {enabled && <Typography variant="h4" color="primary">Minting...</Typography>}
+      {isEnabled && <Typography variant="h4" color="primary">Minting...</Typography>}
       <Card sx={{ maxWidth: 345, borderRadius: 10, height: 200, width: 300 }}>
         <CardMedia
           component="img"
           alt="picture"
           height="200"
-          image={enabled ? coinflip : coinflip_disabled}
+          image={isEnabled ? coinflip : coinflip_disabled}
         />
       </Card>
       <BasicModal open={isModalOpen} handleClose={handleClose} text="NFT minted" openseaLink="" tokenId={tokenId} />

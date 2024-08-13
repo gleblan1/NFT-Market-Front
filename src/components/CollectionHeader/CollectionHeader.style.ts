@@ -15,13 +15,13 @@ export const useClasses = makeStyles<{ collection: string }>()(({}, { collection
     backgroundSize: 'cover',
   },
   text: {
-    fontSize: 14,
+    fontSize: '0.875rem',
     fontWeight: 500,
     fontFamily: 'Raleway, sans-serif',
   },
   button: {
     height: 50, 
-    fontSize: '23px',
+    fontSize: '1.438rem',
     marginRight: '10px'
   }
 }));

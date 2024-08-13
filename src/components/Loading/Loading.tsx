@@ -2,15 +2,13 @@ import { Box, Typography, useTheme } from '@mui/material';
 import React, { FC } from 'react';
 import { useClasses } from './Loading.style';
 
-
-
-export const Loading: FC<LoadingProps> = ({text}) => {
-  const styles = useClasses();
+export const Loading: FC<LoadingProps> = ({ text }) => {
+  const { classes } = useClasses();
   return (
     <>
-      <Box className={styles.classes.root}>
-        <Typography variant='h3' className={styles.classes.loadingText}>
-          {text}<span className="dots"></span>
+      <Box className={classes.container}>
+        <Typography variant='h3'>
+          {text}
         </Typography>
       </Box>
     </>

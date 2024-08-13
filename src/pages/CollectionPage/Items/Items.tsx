@@ -37,10 +37,10 @@ export const Items: React.FC = () => {
         <Box sx={{ width: '90%', display: 'flex', justifyContent: 'center' }}>
            
                 <Grid container spacing={2}>
-                    <Search SearchHandler={handleSearch} />
+                    <Search searchHandler={handleSearch} />
                     {tokens.map((token) => (
                         <Grid item xs={12} sm={6} md={4} lg={3} key={token.id} sx={{ display: 'flex', justifyContent: 'center' }}>
-                            <ImgMediaCard picture={token.uri} tokenId={token.id} clickable={true} />
+                            <ImgMediaCard picture={token.uri} tokenId={token.id} isClickable={true} />
                         </Grid>
                     ))}
                 </Grid>

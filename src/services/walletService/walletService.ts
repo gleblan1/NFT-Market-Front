@@ -5,9 +5,9 @@ import { Wallet } from './walletService.types'
 import { Config } from '../../types'
 
 export const useWallet = create<Wallet>()((set) => ({
-  address: ethers.ZeroAddress,
+  address$: ethers.ZeroAddress,
   updateAddress: async () => {
     const config: Config = await getConfig();
-    set((state) => ({ address: config.address }));
+    set((state) => ({ address$: config.address }));
   }
 }))

@@ -1,19 +1,23 @@
-import React from "react";
-import { Box, Input } from "@mui/material";
+import React, { FC } from "react";
+import { Box, Input, Stack } from "@mui/material";
 import { useClasses } from "./Search.style";
 import { SearchProps } from "./Search.types";
 
-export const Search: React.FC<SearchProps> = ({SearchHandler}) => {
+export const Search: FC<SearchProps> = ({searchHandler}) => {
   const {classes} = useClasses();
 
+  function handler(e: React.ChangeEvent<HTMLInputElement>) {
+    return searchHandler(e.target.value)
+  }
+
   return (
-    <Box sx={{width: '100%', display: 'flex', justifyContent: 'center'}}>
+    <Stack justifyContent={'center'} width={'100%'}>
       <Input
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {SearchHandler(e.target.value)}}
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {handler(e)}}
         placeholder="Search"
         disableUnderline
         className={classes.search}
       />
-    </Box>
+    </Stack>
   );
 }

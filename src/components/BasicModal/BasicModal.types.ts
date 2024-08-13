@@ -1,4 +1,4 @@
-export interface BasicModalProps {
+export type BasicModalProps = {
   open: boolean;
   handleClose: () => void;
   text: string;

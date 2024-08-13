@@ -26,5 +26,8 @@ export default {
   info: 'rgba(0, 150, 136, 1)',
   contrastColorDark: '#e0f2f1',
   contrastColorLight: '#004d40',
-
+  switch1: '#8796A5',
+  switch2:'#aab4be',
+  switch3: '#003892',
+  switch4: '#001e3c'
 }

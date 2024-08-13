@@ -7,12 +7,13 @@ import { FC } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { BasicModalProps } from './BasicModal.types';
 import { useClasses } from './BasicModal.style';
+import { Stack } from '@mui/material';
 
 export const BasicModal: FC<BasicModalProps> = ({open, handleClose, text, tokenId}) => {
 
   const navigate = useNavigate();
   const {classes} = useClasses();
-
+//TODO: поставить руты в енаме
   return (
     <div>
       <Modal
@@ -21,16 +22,16 @@ export const BasicModal: FC<BasicModalProps> = ({open, handleClose, text, tokenI
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box className={classes.root}>
+        <Box className={classes.container}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
             Congratulations
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
             {text}
           </Typography>
-        <Box sx={{display: "flex", justifyContent: "end", alignItems: "end", flexDirection: "column", gap: 2}}>
+        <Stack justifyContent={"end"} alignItems={"end"} flexDirection={"column"} gap={2}>
           <Button className={classes.button} onClick={() => navigate(`/token/${tokenId}`)}>View NFT</Button>
-        </Box>
+        </Stack>
         </Box>
       </Modal>
     </div>

@@ -1,5 +1,5 @@
 import { Avatar, Box, Button, Paper, Menu, MenuItem, Switch, FormControlLabel } from "@mui/material";
-import { useState, useEffect } from "react";
+import { useState, useEffect, FC } from "react";
 import { ethers } from "ethers";
 import { useNavigate } from "react-router-dom";
 import { useWallet } from "../../services/walletService";
@@ -7,11 +7,12 @@ import React from "react";
 import { useClasses } from "./Header.style";
 import { getConfig } from "../../helpers";
 import { Config } from "../../types";
-import { Search } from "../Search/Search";
+//TODO: alias
 import MUISwitch from "../Switch/Switch";
+import colors from "../../theme/colors";
 
-export function Header() {
-    const { address, updateAddress } = useWallet();
+export const Header: FC = () => {
+    const { address$, updateAddress } = useWallet();
     const navigate = useNavigate();
     const [localAddress, setLocalAddress] = useState<string>(ethers.ZeroAddress);
     const [isScrolledToTop, setIsScrolledToTop] = useState<boolean>(true);
@@ -22,42 +23,8 @@ export function Header() {
     const { classes } = useClasses({ isScrolledToTop });
 
     useEffect(() => {
-        if (address) setLocalAddress(address);
-    }, [address]);
-
-    useEffect(() => {
-        const handleAccountsChanged = (accounts: string[]) => {
-            if (accounts.length > 0) {
-                updateAddress(accounts[0]);
-            } else {
-                updateAddress('');
-            }
-        };
-
-        if ((window as any).ethereum) {
-            (window as any).ethereum.on('accountsChanged', handleAccountsChanged);
-
-            return () => {
-                (window as any).ethereum.removeListener('accountsChanged', handleAccountsChanged);
-            };
-        }
-    }, [updateAddress]);
-
-    useEffect(() => {
-        const handleScroll = () => {
-            setIsScrolledToTop(window.scrollY === 0);
-        };
-
-        window.addEventListener('scroll', handleScroll);
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, []);
-
-    async function connectWallet() {
-        const accounts = await (window as any).ethereum.request({ method: 'eth_requestAccounts' });
-        updateAddress(accounts[0]);
-    }
+        if (address$) setLocalAddress(address$);
+    }, [address$]);
 
     function stringToColor(string: string) {
         let hash = 0;
@@ -98,9 +65,10 @@ export function Header() {
             (window as any).ethereum.request({
                 method: 'wallet_dis',
             });
+            updateAddress(ethers.ZeroAddress);
         });
     }
-
+//TODO: enum
     return (
         <Paper elevation={3} className={classes.header}>
             <Box>
@@ -111,7 +79,7 @@ export function Header() {
             <Box sx ={{display: 'flex'}}>
                 <MUISwitch/>
                 <Button sx={{ height: 50, width: "auto" }} onClick={handleClick}>
-                    <Avatar {...stringAvatar(address.slice(2))} />
+                    <Avatar {...stringAvatar(address$.slice(2))} />
                 </Button>
             </Box>
             <Menu
@@ -127,7 +95,7 @@ export function Header() {
                     horizontal: 'right',
                 }}
             >
-                <MenuItem onClick={handleClose} className={classes.text} sx={{ borderBottom: "1px solid #E0E0E0" }}>{localAddress}</MenuItem>
+                <MenuItem onClick={handleClose} className={classes.text} sx={{ borderBottom: `1px solid ${colors.secondary}` }}>{localAddress}</MenuItem>
                 <MenuItem onClick={handleDisconnect} className={classes.text}>Logout</MenuItem>
             </Menu>
 

@@ -1,3 +1,3 @@
-export interface SearchProps {
-  SearchHandler: (value: string) => void;
+export type SearchProps = {
+  searchHandler: (value: string) => void;
 }

@@ -19,10 +19,10 @@ export const CollectionPage: React.FC = () => {
         {
             getAllTokens(config.contract, config.signer, config.address).then((tokens: Token[]) => {
                 setCurrentSupply(tokens.length);
+                setTokens(tokens);
                 if (tokens.length === 0) {
                     setIsLoading(false, '');
                 }
-                setTokens(tokens);
             })
         }
         );
@@ -36,7 +36,7 @@ export const CollectionPage: React.FC = () => {
 
     return (
         <>
-            <CollectionHeader image={'https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg'} name={'Heads or Tails'} owner={''} totalSupply={60} currentSupply={currentSupply}/>
+            <CollectionHeader name={'Heads or Tails'} owner={''} totalSupply={60} currentSupply={currentSupply}/>
         </>
     );
 };

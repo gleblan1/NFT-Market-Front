@@ -1,7 +1,7 @@
-export interface ImgMediaCardProps {
+export type ImgMediaCardProps = {
   picture: string;
   tokenId: number;
-  clickable: boolean;
+  isClickable: boolean;
 }
 
 export type Response = {

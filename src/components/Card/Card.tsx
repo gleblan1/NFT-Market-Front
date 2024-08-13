@@ -1,6 +1,6 @@
 import * as React from 'react';
-import Card from '@mui/material/Card';
-import CardMedia from '@mui/material/CardMedia';
+import {Card} from '@mui/material';
+import {CardMedia} from '@mui/material';
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
 import { FC } from 'react';
@@ -8,15 +8,15 @@ import { ImgMediaCardProps } from './Card.types';
 import { useClasses } from './Card.style';
 import { Box, Typography } from '@mui/material';
 
-export const ImgMediaCard: FC<ImgMediaCardProps> = ({ picture, tokenId, clickable }) => {
+export const ImgMediaCard: FC<ImgMediaCardProps> = ({ picture, tokenId, isClickable }) => {
     const navigate = useNavigate();
     const { classes } = useClasses();
 
     return (
-        clickable ?
+        isClickable ?
             <Button 
                 sx={{ borderRadius: 10 }} 
-                onClick={() => { navigate('/token/' + tokenId) }}
+                onClick={() => navigate('/token/' + tokenId) }
             >
                 <Box className={classes.card}>
                     <Card sx={{borderRadius: 10 }}>
