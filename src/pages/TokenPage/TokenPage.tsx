@@ -1,14 +1,14 @@
 import { Box, Button, Typography } from "@mui/material";
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import * as React from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { ImgMediaCard } from "../../components/Card/Card";
+import { ImgMediaCard } from "@components/Card/Card";
 import { BigNumberish } from "ethers";
-import { getConfig } from "../../helpers";
-import { Config } from "../../types";
-import { useLoading } from "../../services/loadingService/loadingService";
+import { getConfig } from "@helpers/getConfig";
+import { Config } from "@types/config";
+import { useLoading } from "@services/loadingService";
 import { useClasses } from "./TokenPage.style";
-
+import { useEffect, useState } from "react";
 export const TokenPage: React.FC = () => {
     const {id} = useParams()
     const [description, setDescription] = useState('')
@@ -67,7 +67,7 @@ export const TokenPage: React.FC = () => {
         <>
             <Box className={classes.container}>
                 <Box className={classes.article}>
-                    <ImgMediaCard picture={picture} clickable={false} tokenId={Number(id)}></ImgMediaCard>
+                    <ImgMediaCard picture={picture} isClickable={false} tokenId={Number(id)}></ImgMediaCard>
                     <Box sx={{width: "50%"}}>
                         <Typography variant="h2" color={"secondary"}>{title}</Typography>
                         <Typography variant="h6" color={"secondary"}>{description}</Typography>

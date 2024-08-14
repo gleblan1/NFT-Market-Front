@@ -2,14 +2,14 @@ import { Avatar, Box, Button, Paper, Menu, MenuItem, Switch, FormControlLabel } 
 import { useState, useEffect, FC } from "react";
 import { ethers } from "ethers";
 import { useNavigate } from "react-router-dom";
-import { useWallet } from "../../services/walletService";
+import { useWallet } from "@services/walletService";
 import React from "react";
 import { useClasses } from "./Header.style";
-import { getConfig } from "../../helpers";
-import { Config } from "../../types";
+import {getConfig} from "@helpers/getConfig";
+import {Config}  from "@types/config";
 //TODO: alias
 import MUISwitch from "../Switch/Switch";
-import colors from "../../theme/colors";
+import colors from "@theme/colors";
 
 export const Header: FC = () => {
     const { address$, updateAddress } = useWallet();

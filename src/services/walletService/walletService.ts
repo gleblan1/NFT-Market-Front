@@ -1,8 +1,8 @@
 import { create } from 'zustand'
-import { getConfig } from '../../helpers'
+import { getConfig } from '@helpers/getConfig'
 import { ethers } from 'ethers'
 import { Wallet } from './walletService.types'
-import { Config } from '../../types'
+import { Config } from '@types/config'
 
 export const useWallet = create<Wallet>()((set) => ({
   address$: ethers.ZeroAddress,

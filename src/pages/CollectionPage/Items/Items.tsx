@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Box, Grid, Typography } from "@mui/material";
-import { ImgMediaCard } from "../../../components/Card/Card";
-import { getAllTokens, getConfig } from "../../../helpers";
-import { Config, Token } from "../../../types";
-import { useLoading } from "../../../services/loadingService/loadingService";
-import { Search } from "../../../components/Search/Search";
+import { ImgMediaCard } from "@components/Card/Card";
+import { getAllTokens } from "@helpers/getPictures";
+import { Config, Token } from "@types/index";
+import { useLoading } from "@services/loadingService/loadingService";
+import { Search } from "@components/Search/Search";
+import { getConfig } from "@helpers/getConfig";
 
 export const Items: React.FC = () => {
     const [tokens, setTokens] = useState<Token[]>([]);

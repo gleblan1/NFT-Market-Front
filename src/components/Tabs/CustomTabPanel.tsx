@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
 import { TabPanelProps } from './BasicTabs.types';
-import { useClasses } from './BasicTabs.style';
 import { Box } from '@mui/material';
 
 export const CustomTabPanel: FC<TabPanelProps> = ({ children, value, index, ...other } ) => {

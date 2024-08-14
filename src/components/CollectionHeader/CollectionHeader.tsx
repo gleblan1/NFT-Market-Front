@@ -2,16 +2,12 @@ import { Box, Button, Stack, Typography } from "@mui/material";
 import React, { FC, useCallback } from "react";
 import { CollectionHeaderProps } from "./CollectionHeader.types";
 import { useClasses } from "./CollectionHeader.style";
-//alias
-import Bg from '../../assets/coins_bg.jpg';
-import { useNavigate } from "react-router-dom";
-import BasicTabs from "../Tabs/BasicTabs";
-import { Search } from "../Search/Search";
-import colors from "../../theme/colors";
+import Bg from '@assets/coins_bg.jpg';
+import {BasicTabs} from "@components/Tabs";
+import colors from "@theme/colors";
 
 export const CollectionHeader: FC<CollectionHeaderProps> = ({ totalSupply, currentSupply, owner, name }) => {
   const { classes } = useClasses({ collection: Bg });
-  const navigate = useNavigate();
   const countListed = useCallback(() => {
     return Math.floor(currentSupply * 100 / (totalSupply ?? 1));
   }, [currentSupply, totalSupply]);

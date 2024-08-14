@@ -22,9 +22,12 @@
     "react-dom": "^18.3.1",
     "react-router-dom": "^6.24.1",
     "tss-react": "^4.9.10",
+    "vite-tsconfig-paths": "^5.0.1",
     "zustand": "^4.5.4"
   },
   "devDependencies": {
+    "@types/config": "^3.3.4",
+    "@types/node": "^22.3.0",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.1",

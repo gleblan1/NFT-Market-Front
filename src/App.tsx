@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react"
-import { Container, createTheme, colors, ThemeProvider, Stack } from "@mui/material"
+import React, { useEffect } from "react"
+import { ThemeProvider } from "@mui/material"
 import { RouterProvider } from "react-router-dom"
 import { router } from "./router"
-import { useWallet } from "./services/walletService"
-import { materialDarkTheme, materialLightTheme } from "./theme/material-theme"
-import { GlobalStyle } from "./theme/global-style"
-import { useTheme } from "./services/themeService/themeService"
+import { useWallet } from "@services/walletService"
+import { materialDarkTheme, materialLightTheme } from "@theme/material-theme"
+import { GlobalStyle } from "@theme/global-style"
+import { useTheme } from "@services/themeService/themeService"
 
 function App() {
   const {updateAddress} = useWallet()

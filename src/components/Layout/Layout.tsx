@@ -1,9 +1,8 @@
-import React, { FC, useEffect } from "react";
+import React, { FC } from "react";
 import { Header } from "../Header/Header";
-import { Outlet, useNavigate } from "react-router-dom";
-import { Footer } from "../Footer/Footer";
-import { Loading } from "../Loading/Loading";
-import { useLoading } from "../../services/loadingService/loadingService";
+import { Outlet } from "react-router-dom";
+import { Loading } from "@components/Loading";
+import { useLoading } from "@services/loadingService";
 import { useClasses } from "./Layout.style";
 //TODO: index
 export const Layout: FC = () => {
@@ -15,6 +14,5 @@ export const Layout: FC = () => {
         <main className={classes.container}>
             <Outlet/>
         </main>
-        <Footer/>
     </>;
 }

@@ -2,7 +2,7 @@ import * as React from 'react';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
-import { Items } from '../../pages/CollectionPage/Items';
+import { Items } from '@pages/CollectionPage/Items';
 import { CustomTabPanel } from './CustomTabPanel';
 
 function a11yProps(index: number) {
@@ -12,7 +12,7 @@ function a11yProps(index: number) {
   };
 }
 
-export default function BasicTabs() {
+export function BasicTabs() {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {

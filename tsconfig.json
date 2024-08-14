@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "jsx": "react",
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": ["src/components/*"],
+      "@assets/*": ["src/assets/*"],
+      "@helpers/*": ["src/helpers/*"],
+      "@services/*": ["src/services/*"],
+      "@types/*":["src/types/*"],
+      "@pages/*":["src/pages/*"],
+      "@contract-data/*":["src/contract-data/*"],
+      "@theme/*":["src/theme/*"],
+      "@axios/*":["src/axios/*"]
+    }
+  }
+}

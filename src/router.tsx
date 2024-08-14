@@ -1,10 +1,10 @@
-import React from "react";
+import * as React from "react";
 import { createBrowserRouter } from "react-router-dom";
-import { Layout } from "./components/Layout/Layout";
+import { Layout } from "@components/Layout";
 import { CollectionPage } from "./pages/CollectionPage/CollectionPage";
 import { WelcomePage } from "./pages/WelcomePage";
 import { OwnTokensPage } from "./pages/OwnTokensPage";
-import MintPage from "./pages/MintPage/MintPage";
+import {MintPage} from "@pages/MintPage";
 import { TokenPage } from "./pages/TokenPage/TokenPage";
 
 export const router = createBrowserRouter([

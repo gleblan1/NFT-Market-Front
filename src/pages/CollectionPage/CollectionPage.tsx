@@ -1,12 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Box, Grid, Typography } from "@mui/material";
-import { ImgMediaCard } from "../../components/Card/Card";
-import { getAllTokens, getConfig } from "../../helpers";
-import { Config, Token } from "../../types";
-import { useLoading } from "../../services/loadingService/loadingService";
-import { CollectionHeader } from "../../components/CollectionHeader";
-import { Items } from "./Items";
-import { Search } from "../../components/Search/Search";
+import { getAllTokens, getConfig } from "@helpers/index";
+import { Config, Token } from "@types/index";
+import { useLoading } from "@services/loadingService/loadingService";
+import { CollectionHeader } from "@components/CollectionHeader";
 
 export const CollectionPage: React.FC = () => {
     const [tokens, setTokens] = useState<Token[]>([]);

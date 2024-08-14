@@ -2,12 +2,12 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import { Button, Card, CardMedia, Typography } from '@mui/material';
 import { FC, useState } from 'react';
-import coinflip from '../../assets/coinflip.gif';
-import coinflip_disabled from '../../assets/coinflip_disabled.gif';
-import axios from 'axios';
-import { BasicModal } from '../../components/BasicModal/BasicModal';
-import { getConfig } from '../../helpers';
+import coinflip from '@assets/coinflip.gif';
+import coinflip_disabled from '@assets/coinflip_disabled.gif';
+import { BasicModal } from '@components/BasicModal';
+import { getConfig } from '@helpers/getConfig';
 import { useClasses } from './MintPage.style';
+import { api } from '@axios/api';
 
 export const MintPage: FC = () => {
   const [isEnabled, setIsEnabled] = useState(false);
@@ -15,7 +15,7 @@ export const MintPage: FC = () => {
   const [tokenId, setTokenId] = useState(1);
   const [loading, setLoading] = useState(false);
 
-  const {classes} = useClasses();
+  const { classes } = useClasses();
 
   const handleClose = () => {
     setIsModalOpen(false);
@@ -26,7 +26,10 @@ export const MintPage: FC = () => {
     setLoading(true); 
     try {
       const { contract, signer, address } = await getConfig();
-      const response = await axios.post('http://localhost:3001/mint/mint', { address });
+
+      const mintRoute = process.env.MINT_ROUTE;
+
+      const response = await api.post(`${mintRoute}`, { address });
       console.log(response);
       const data = response.data;
       console.log(data);
@@ -39,7 +42,7 @@ export const MintPage: FC = () => {
       await tx.wait();
 
       const totalSupply = await contract.connect(signer).totalSupply();
-      const id = Number(await contract.connect(signer).tokenByIndex(totalSupply - 1n));
+      const id = Number(await contract.connect(signer).tokenByIndex(BigInt(Number(totalSupply) - 1)));
       setTokenId(id);
 
       tx.wait().then(() => {
@@ -73,7 +76,7 @@ export const MintPage: FC = () => {
         variant="outlined"
         sx={{ width: '20%', height: 50}}
         onClick={mint}
-        disabled={loading} // Disable button while loading
+        disabled={loading}
       >
         Mint
       </Button>
