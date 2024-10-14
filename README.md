@@ -1,9 +1,3 @@
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 # NFT-Market-Front
+
+This project is a decentralized NFT marketplace on the Ethereum blockchain using ERC-721 ethereum standard. It enables users to mint, buy, sell, and trade NFTs. The platform features a secure backend and a user-friendly frontend integrated with MetaMask. Users can mint NFTs with unique metadata, list them for sale, and purchase listed NFTs. Transactions are secured through smart contracts, ensuring automatic ownership transfers and trustless exchanges. The smart contract handles minting, listing, buying, and transferring NFTs, with events emitted for tracking and integration with the frontend application.
